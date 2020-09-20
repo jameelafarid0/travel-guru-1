@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import hotelInfo from '../../../fakedata/hotel-info';
+import { TravelInfoContext } from '../../App';
+import hotelInfo from '../../fakedata/hotel-info';
 import './Hotel.css';
 
 const Hotel = () => {
@@ -8,6 +9,9 @@ const Hotel = () => {
 
     const [hotel, setHotel] = useState(hotelInfo);
     const [hotelCard, setHotelCard] = useState([]);
+
+    const {destineState, loggedUserState} = useContext(TravelInfoContext);
+    const [destinationInfo, setDestinationInfo] = destineState;
 
     useEffect(() => {
         const matchedPlace = hotel.filter((hotel => hotel.pId.toString() === placeId));
@@ -18,8 +22,10 @@ const Hotel = () => {
         <div>
             <div className="hotel-name">
                 <h5>252 stays April 13-17 3 guests</h5>
-                <p>Stay in destination place</p>
+                <p>Stay in your destination place</p>
             </div>
+            <div className="flex-items">
+                <div>
             {
                 hotelCard.map(hotel => 
                     <div >
@@ -37,7 +43,12 @@ const Hotel = () => {
                         </div>
                     </div>
                 )
-            }
+              }
+                </div>
+                    <div className="img-container">
+                        <img src={'https://i.imgur.com/FDGhexm.png'} alt=""/>
+                    </div>
+            </div>
         </div>
     );
 };

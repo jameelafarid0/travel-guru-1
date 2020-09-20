@@ -32,3 +32,11 @@
     font-size: 30px;
     font-family: 'Times New Roman', Times, serif;
 }
+.img-container img{
+    width: 420px;
+    height: 630px;
+    margin-left: 80px;
+}
+.flex-items{
+    display: flex;
+}

@@ -2,22 +2,27 @@ import React, { createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route,Link
 } from "react-router-dom";
-import DestinationBooking from './components/Header/DestinationBooking/DestinationBooking';
+import DestinationBooking from './components/DestinationBooking/DestinationBooking';
+
 import Header from './components/Header/Header';
-import Home from './components/Header/Home/Home';
-import Hotel from './components/Header/Hotel/Hotel';
-import Login from './components/Header/Login/Login';
+import Home from './components/Home/Home';
+import Hotel from './components/Hotel/Hotel';
+import Login from './components/Login/Login';
+import NoMatch from './components/NoMatch/NoMatch';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import travelInfo from './fakedata/travel-info';
 
 export const TravelInfoContext = createContext();
 
-function App() {
+function App(props) {
   const [destinationInfo, setDestinationInfo] = useState(travelInfo);
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
-    <TravelInfoContext.Provider value={[destinationInfo, setDestinationInfo]}>
+    <TravelInfoContext.Provider 
+    value={{destineState:[destinationInfo, setDestinationInfo], loggedUserState:[loggedInUser,setLoggedInUser]}}>
+      {props.children}
       <Router> 
         <Header/> 
         <Switch>
@@ -27,14 +32,17 @@ function App() {
           <Route path="/destination-booking/:destinationId">
             <DestinationBooking/>
           </Route>
-          <Route path="/hotel/:placeId">
+          <PrivateRoute path="/hotel/:placeId">
             <Hotel/>
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
             <Login/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Home />
+          </Route>
+          <Route path="*">
+            <NoMatch/>
           </Route>
         </Switch>
       </Router>

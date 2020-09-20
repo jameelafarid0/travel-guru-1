@@ -21,7 +21,7 @@ function Header() {
                     <li>
                         <Link to="/contact">Contact</Link>
                     </li>
-                    <button>Login</button>
+                    <Link to="/login"><button style={{cursor: 'pointer'}}>Login</button></Link>
                 </ul>
             </nav>
         </div>
