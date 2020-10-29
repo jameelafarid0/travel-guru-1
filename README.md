@@ -1,6 +1,6 @@
 # Travel Guru
 #### Live Link: https://travel-guru-e25c7.web.app/
-#### Resume: https://drive.google.com/file/d/1UhbNoLPVRcnIWV9IfVAeB7H8vRSZ4n-y/view?usp=sharing
+#### Resume: https://drive.google.com/file/d/1BfgJrLU2an2iGUT6zj4t3VB_govt20fb/view?usp=sharing
 
 ### Features:-
 - List of destincation places will appear in a row 
