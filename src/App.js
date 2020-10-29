@@ -30,7 +30,7 @@ function App(props) {
             <Home/>
           </Route>
           <Route path="/destination-booking/:destinationId">
-            <DestinationBooking/>
+            <DestinationBooking/> 
           </Route>
           <PrivateRoute path="/hotel/:placeId">
             <Hotel/>
